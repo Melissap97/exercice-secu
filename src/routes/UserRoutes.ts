@@ -33,7 +33,7 @@ const router = express.Router()
  *                     type: string
  *                     example: "johndoe@example.com"
  *       500:
- *         description: Internal Server Error
+ *         description: Erreur ça marche pas
  */
 router.get('', getAllUsers);
 
