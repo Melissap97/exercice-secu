@@ -19,7 +19,7 @@ export const registerSchema = Joi.object({
     .required()
     .messages({
     'string.empty' : 'Le mot de passe est requis.' ,
-    'string.min': 'Le mot de passe doit contenir au moins 8 caractères.' ,
+    'string.min': 'Le mot de passe est trop court.' ,
     'string.pattern.base' : 'Le mot de passe doit contenir au moins un chiffre et un caractère spécial.'
     }),
     age: Joi.number().integer().min(18).max(100).required()
