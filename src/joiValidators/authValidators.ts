@@ -7,12 +7,7 @@ export const loginSchema = Joi.object({
 
 // Définition du schéma de validation pour l'inscription
 export const registerSchema = Joi.object({
-    name: Joi.string().min(3).max(30).required()
-    .messages({
-    'string.empty': 'Le nom est requis.',
-    'string.min': 'Le nom doit contenir au moins 3 caractères.',
-    'string.max': 'Le nom ne peut pas dépasser 30 caractères.'
-    }),
+    
     email: Joi.string().email().required()
     .messages({
     'string.empty': 'L\'email est requis.',
