@@ -9,7 +9,7 @@ export interface UserI extends Document {
 }
 
 const UserSchema: Schema = new Schema({
-    name: { type: String, required: true },
+    name: { type: String, required: false },
     email: { type: String, required: true, unique: true },
     hashedPassword: { type: String, required: true },
     age: { type: Number },
