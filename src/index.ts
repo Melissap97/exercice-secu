@@ -1,4 +1,3 @@
-import { verifyErrorMiddleware } from './middleware/verifyErrorMiddleware';
 import express from "express";
 import dotenv from "dotenv"
 import mongoose from "mongoose";
@@ -9,6 +8,7 @@ import swaggerUi from 'swagger-ui-express'
 import cors from 'cors';
 import UserRoutes from "./routes/UserRoutes";
 import ExpressMongoSanitize from "express-mongo-sanitize";
+import verifyErrorMiddleware from "./middleware/verifyErrorMiddleware";
 
 //Création serveur express
 const app = express()
