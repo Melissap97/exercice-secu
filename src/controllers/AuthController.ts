@@ -8,15 +8,15 @@ import { validateSchema } from "../utils/joiUtils";
 export async function register(req: Request, res: Response) {
     try {
         
-        const { name, email, password, age } = validateSchema(req, registerSchema);
-        if (!name || !email || !password) {
-            res.status(400).send({ message: 'champs name, email et password obligatoires' })
+        const { email, password, age } = validateSchema(req, registerSchema);
+        if (!email || !password) {
+            res.status(400).send({ message: 'champs email et password obligatoires' })
             return
         }
 
         const hashedPassword = await hashPassword(password);
 
-        const newUser: UserI = new User({ name, email, hashedPassword, age })
+        const newUser: UserI = new User({ email, hashedPassword, age })
         const createdUser = await newUser.save();
 
         createdUser.hashedPassword = '';
