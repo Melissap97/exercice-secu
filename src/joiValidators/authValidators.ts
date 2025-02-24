@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export const loginSchema = Joi.object({
-    password: Joi.string().min(8).required()
+    password: Joi.string().min(3).required()
     });
 
 // Définition du schéma de validation pour l'inscription
