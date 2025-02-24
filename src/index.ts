@@ -1,3 +1,4 @@
+import { verifyErrorMiddleware } from './middleware/verifyErrorMiddleware';
 import express from "express";
 import dotenv from "dotenv"
 import mongoose from "mongoose";
@@ -68,6 +69,8 @@ app.get('/api-docs.json', (req, res) => {
 
 // Swagger route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+app.use(verifyErrorMiddleware);
 
 
 console.log(process.env.NODE_ENV);
