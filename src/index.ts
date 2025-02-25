@@ -51,26 +51,27 @@ app.use(verifyErrorMiddleware);
 
 connectDB();
 
-
-// Activer helmet pour sécuriser les en-têtes HTTP
-app.use(
-    helmet({
+app.use(helmet({
     contentSecurityPolicy: {
-    directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "'nonce-random123'"],
-    styleSrc: ["'self'"], // Supprimer 'strict-dynamic'
-    imgSrc: ["'self'"], // Supprimer 'data:'
-    objectSrc: ["'none'"],
-    baseUri: ["'self'"],
-    formAction: ["'self'"],
-    frameAncestors: ["'none'"],
-    scriptSrcAttr: ["'none'"],
-    upgradeInsecureRequests: [],
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'nonce-random123'"],
+            styleSrc: ["'self'"],
+            imgSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            baseUri: ["'self'"],
+            formAction: ["'self'"],
+            frameAncestors: ["'none'"],
+            scriptSrcAttr: ["'none'"],
+            upgradeInsecureRequests: [],
+        },
     },
-    },
-    })
-   );
+    dnsPrefetchControl: true, // Prevent DNS prefetching
+    hidePoweredBy: true, // Hide the "X-Powered-By" header
+    noSniff: true, // Prevent browsers from sniffing content types
+   
+}));
+
 
 //TODO ajouter routes ici
 app.use('/todos', TodoRoutes)
