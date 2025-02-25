@@ -27,7 +27,7 @@ export async function register(req: Request, res: Response) {
             res.status(400).send({ message: "email ou nom déjà existant." })
             return
         } else {
-            res.status(500).send({ message: "erreur" });
+            res.status(500).send({ message: 'Something went wrong. Please try again later.' });
         }
     }
 }
@@ -61,6 +61,6 @@ export async function login(req: Request, res: Response) {
         res.cookie('jwt', token, { httpOnly: true, sameSite: 'strict' });
         res.status(200).json({ message: 'Login succesful!' })
     } catch (err: any) {
-        res.status(500).send({ message: "erreur" })
+        res.status(500).send({ message: 'Something went wrong. Please try again later.' })
     }
 }
