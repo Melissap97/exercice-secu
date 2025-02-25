@@ -23,6 +23,7 @@ const PORT = process.env.PORT
 //COnfig du serveur par défaut
 app.use(express.json());
 
+
 // Activer CORS uniquement pour une seule origine
 //curl ifconfig.me pour connaître l'ip publique de votre pc
 const corsOptions = {
@@ -72,7 +73,16 @@ app.use(helmet({
    
 }));
 
-
+// Error handling middleware
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error(err.stack);  // Log the error details to the server console or a logging service
+  
+    // Send a generic error response to the client
+    res.status(500).send({
+        message: 'Something went wrong. Please try again later.'
+    });
+  });
+  
 //TODO ajouter routes ici
 app.use('/todos', TodoRoutes)
 app.use('/auth', AuthRoutes)
