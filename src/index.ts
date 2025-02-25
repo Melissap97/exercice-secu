@@ -8,7 +8,6 @@ import swaggerUi from 'swagger-ui-express'
 import cors from 'cors';
 import UserRoutes from "./routes/UserRoutes";
 import ExpressMongoSanitize from "express-mongo-sanitize";
-import verifyErrorMiddleware from "./middleware/verifyErrorMiddleware";
 import helmet from "helmet";
 
 //Création serveur express
@@ -48,7 +47,7 @@ const connectDB = async () => {
 
 // Appliquer express-mongo-sanitize sur les requêtes entrantes
 app.use(ExpressMongoSanitize());
-app.use(verifyErrorMiddleware);
+
 
 connectDB();
 

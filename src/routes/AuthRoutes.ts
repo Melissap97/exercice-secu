@@ -1,6 +1,5 @@
 import express from "express"
 import { login, register } from "../controllers/AuthController";
-import verifyErrorMiddleware from "../middleware/verifyErrorMiddleware";
 
 const router = express.Router()
 
@@ -80,7 +79,7 @@ const router = express.Router()
  *                   type: string
  *                   example: "Erreur interne du serveur"
  */
-router.post('/register',verifyErrorMiddleware, register);
+router.post('/register', register);
 
 /**
  * @swagger
@@ -166,7 +165,7 @@ router.post('/register',verifyErrorMiddleware, register);
  *                   type: string
  *                   example: "Erreur interne du serveur"
  */
-router.post('/login',verifyErrorMiddleware, login);
+router.post('/login', login);
 
 
 export default router;
