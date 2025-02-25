@@ -9,6 +9,7 @@ import cors from 'cors';
 import UserRoutes from "./routes/UserRoutes";
 import ExpressMongoSanitize from "express-mongo-sanitize";
 import verifyErrorMiddleware from "./middleware/verifyErrorMiddleware";
+import helmet from "helmet";
 
 //Création serveur express
 const app = express()
@@ -51,7 +52,25 @@ app.use(verifyErrorMiddleware);
 connectDB();
 
 
-
+// Activer helmet pour sécuriser les en-têtes HTTP
+app.use(
+    helmet({
+    contentSecurityPolicy: {
+    directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "'nonce-random123'"],
+    styleSrc: ["'self'"], // Supprimer 'strict-dynamic'
+    imgSrc: ["'self'"], // Supprimer 'data:'
+    objectSrc: ["'none'"],
+    baseUri: ["'self'"],
+    formAction: ["'self'"],
+    frameAncestors: ["'none'"],
+    scriptSrcAttr: ["'none'"],
+    upgradeInsecureRequests: [],
+    },
+    },
+    })
+   );
 
 //TODO ajouter routes ici
 app.use('/todos', TodoRoutes)
